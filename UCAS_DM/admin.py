@@ -26,12 +26,12 @@ class RecordInfoInline(admin.TabularInline):
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
 	inlines = [RecordInfoInline,]
-	list_display = ('document_id', 'location_from', 'valid_code', 'document_code', 'title', 'flag_finished',)
+	list_display = ('document_id', 'location_from', 'valid_code', 'document_code', 'title', 'time_expired', 'flag_finished',)
 	search_fields = ('document_id', 'title', 'DocumentInfo__opinion_leader','DocumentInfo__location_to',)
 	# list_filter = ('time_expired',)
 	# fk_fields = ('location_from', 'time_forward', 'location_to', 'time_recycle', 'opinion_leader',)
 	actions = ['exportToExcel',]
-	date_hierarchy = 'time_expired'
+	# date_hierarchy = 'time_expired'
 
 	def exportToExcel(self, request, queryset):
 		# for d in queryset:
